@@ -1,10 +1,8 @@
+import teamsRouter from "@modules/teams/routes/teams.routes";
 import { Router } from "express";
 
 const routes = Router();
 
-routes.get('/', (request, response) =>{
-    response.json({message: 'Hello Dev!'});
-    return;
-})
+routes.use('/teams', teamsRouter);
 
 export default routes;
