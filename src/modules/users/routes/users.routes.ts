@@ -2,11 +2,12 @@ import { Router } from "express";
 import UsersController from "../controllers/UsersController";
 import { celebrate, Joi, Segments } from "celebrate";
 import isAuthenticated from "@shared/middleware/isAuthenticated";
+import permitionType from "@shared/middleware/permitionType";
 
 const usersRouter = Router();
 const usersController = new UsersController();
 
-usersRouter.get("/", isAuthenticated, async (req, res, next) => {
+usersRouter.get("/", isAuthenticated, permitionType, async (req, res, next) => {
 	try {
 		await usersController.index(req, res, next);
 	} catch (err) {
