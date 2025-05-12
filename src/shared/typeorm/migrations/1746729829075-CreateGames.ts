@@ -31,6 +31,12 @@ export class CreateGames1746729829075 implements MigrationInterface {
 					{
 						name: "winner_id",
 						type: "uuid",
+						isNullable:true
+					},
+					{
+						name:"isTie",
+						type:"boolean",
+						isNullable:true
 					},
 					{
 						name: "week",

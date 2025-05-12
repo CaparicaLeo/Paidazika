@@ -26,6 +26,8 @@ export default class User {
 	@Column()
 	ranking_position: number;
 	@Column()
+	points:number;
+	@Column()
 	avatar: string;
 	@Column()
 	term_guess: Date;
