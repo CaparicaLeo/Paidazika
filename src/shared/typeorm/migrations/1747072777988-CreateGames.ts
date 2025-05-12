@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateGames1746729829075 implements MigrationInterface {
+export class CreateGames1747072777988 implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<void> {
 		await queryRunner.createTable(
 			new Table({
@@ -31,12 +31,12 @@ export class CreateGames1746729829075 implements MigrationInterface {
 					{
 						name: "winner_id",
 						type: "uuid",
-						isNullable:true
+						isNullable: true,
 					},
 					{
-						name:"isTie",
-						type:"boolean",
-						isNullable:true
+						name: "isTie",
+						type: "boolean",
+						isNullable: true,
 					},
 					{
 						name: "week",
@@ -44,7 +44,7 @@ export class CreateGames1746729829075 implements MigrationInterface {
 						isNullable: false,
 					},
 					{ name: "created_at", type: "timestamp", default: "now()" },
-                    { name: "update_at", type: "timestamp", default: "now()" }
+					{ name: "update_at", type: "timestamp", default: "now()" },
 				],
 			})
 		);

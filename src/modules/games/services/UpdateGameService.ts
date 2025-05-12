@@ -9,6 +9,7 @@ interface IRequest {
 	team_home_name: string;
 	date: Date;
 	winner_name: string;
+	isTie: boolean;
 	week: number;
 }
 export default class UpdateGameService {
@@ -18,6 +19,7 @@ export default class UpdateGameService {
 		team_home_name,
 		date,
 		winner_name,
+		isTie,
 		week,
 	}: IRequest) {
 		const gamesRepository = getCustomRepository(GamesRepository);
@@ -35,6 +37,7 @@ export default class UpdateGameService {
 		game.team_away_id = team_away_id;
 		game.team_home_id = team_home_id;
 		game.winner_id = winner_id;
+		game.isTie = isTie;
 		game.date = date;
 		game.week = week;
 
