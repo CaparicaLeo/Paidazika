@@ -30,7 +30,6 @@ teamsRouter.post(
 	celebrate({
 		[Segments.BODY]: {
 			name: Joi.string().required(),
-			avatar: Joi.string().required()
 		},
 	}),
 	async (req, res, next) => {

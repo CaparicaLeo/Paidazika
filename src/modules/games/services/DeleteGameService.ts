@@ -12,7 +12,7 @@ export default class DeleteGameService {
 		if (!game) {
 			throw new AppError("Game not found");
 		}
-		gamesRepository.delete(game);
+		await gamesRepository.remove(game);
 		return game;
 	}
 }

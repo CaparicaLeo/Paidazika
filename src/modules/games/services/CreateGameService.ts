@@ -23,10 +23,13 @@ export default class CreateGameService {
         await gamesRepository.save(game);
         return game;
 	}
-	private async findTeam(teamName: string): Promise<string | undefined> {
+	private async findTeam(teamName: string): Promise<string> {
 		const teamRepository = getCustomRepository(TeamRepository);
 		const team = await teamRepository.findByName(teamName);
 
-		return team ? team.id : undefined;
+		if(!team){
+			throw new AppError("Team not found");
+		}
+		return team.id;
 	}
 }

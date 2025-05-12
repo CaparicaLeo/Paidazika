@@ -20,6 +20,7 @@ app.use(
 		response: Response,
 		next: NextFunction
 	): void => {
+		console.log("erro: "+error);
 		if (error instanceof AppError) {
 			response.status(error.statusCode).json({
 				status: "error",

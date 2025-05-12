@@ -37,7 +37,9 @@ export default class CreateUserService {
 			email,
 			password: hashedPassword,
 			type,
+			points:0,
 			ranking_position: 0,
+
 		});
 		await usersRepository.save(user);
 		return user;
