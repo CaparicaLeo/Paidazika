@@ -1,11 +1,12 @@
 import { Router } from "express";
-import UsersController from "../controller/UsersController";
+import UsersController from "../controllers/UsersController";
 import { celebrate, Joi, Segments } from "celebrate";
+import isAuthenticated from "@shared/middleware/isAuthenticated";
 
 const usersRouter = Router();
 const usersController = new UsersController();
 
-usersRouter.get("/", async (req, res, next) => {
+usersRouter.get("/", isAuthenticated, async (req, res, next) => {
 	try {
 		await usersController.index(req, res, next);
 	} catch (err) {
@@ -19,7 +20,7 @@ usersRouter.post(
 			name: Joi.string().required(),
 			email: Joi.string().email().required(),
 			password: Joi.string().required(),
-            type: Joi.string()
+			type: Joi.string(),
 		},
 	}),
 	async (req, res, next) => {

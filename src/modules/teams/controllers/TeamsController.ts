@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import ListTeamService from "../service/ListTeamService";
-import ShowTeamService from "../service/ShowTeamService";
-import CreateTeamService from "../service/CreateTeamService";
-import UpdateTeamService from "../service/UpdateTeamService";
-import DeleteTeamService from "../service/DeleteTeamService";
+import ListTeamService from "../services/ListTeamService";
+import ShowTeamService from "../services/ShowTeamService";
+import CreateTeamService from "../services/CreateTeamService";
+import UpdateTeamService from "../services/UpdateTeamService";
+import DeleteTeamService from "../services/DeleteTeamService";
 
 export default class TeamsController {
 	public async index(

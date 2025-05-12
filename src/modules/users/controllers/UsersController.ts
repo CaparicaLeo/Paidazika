@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import ListUserService from "../service/ListUserService";
-import CreateUserService from "../service/CreateUserService";
+import ListUserService from "../services/ListUserService";
+import CreateUserService from "../services/CreateUserService";
 
 export default class UsersController {
 	public async index(
@@ -10,6 +10,7 @@ export default class UsersController {
 	): Promise<Response | void> {
 		try {
 			const listUser = new ListUserService();
+			console.log(request.user.id);
 			const users = await listUser.execute();
 			return response.json(users);
 		} catch (err) {
