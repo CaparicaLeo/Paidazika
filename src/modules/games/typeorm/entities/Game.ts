@@ -14,6 +14,8 @@ export default class Game{
     winner_id:string
     @Column()
     week:number
+    @Column()
+    isTie:boolean;
     @CreateDateColumn()
     created_at:Date
     @UpdateDateColumn()
