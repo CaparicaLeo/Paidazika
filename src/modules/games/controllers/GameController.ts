@@ -6,7 +6,6 @@ import UpdateGameService from "../services/UpdateGameService";
 import DeleteGameService from "../services/DeleteGameService";
 
 export default class GameController {
-	//Not tested on Insomnia
 	public async create(
 		request: Request,
 		response: Response,
