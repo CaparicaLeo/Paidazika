@@ -1,11 +1,13 @@
 import { Router } from "express";
 import TeamsController from "../controllers/TeamsController";
 import { celebrate, Joi, Segments } from "celebrate";
+import isAuthenticated from "@shared/middleware/isAuthenticated";
+import permitionType from "@shared/middleware/permitionType";
 
 const teamsRouter = Router();
 const teamsController = new TeamsController();
 
-teamsRouter.get("/", async (req, res, next) => {
+teamsRouter.get("/", isAuthenticated, async (req, res, next) => {
 	try {
 		await teamsController.index(req, res, next);
 	} catch (err) {
@@ -17,6 +19,7 @@ teamsRouter.get(
 	celebrate({
 		[Segments.PARAMS]: { id: Joi.string().uuid().required() },
 	}),
+	isAuthenticated,
 	async (req, res, next) => {
 		try {
 			await teamsController.show(req, res, next);
@@ -32,6 +35,8 @@ teamsRouter.post(
 			name: Joi.string().required(),
 		},
 	}),
+	isAuthenticated,
+	permitionType,
 	async (req, res, next) => {
 		try {
 			await teamsController.create(req, res, next);
@@ -49,6 +54,8 @@ teamsRouter.put(
 			avatar: Joi.string().required(),
 		},
 	}),
+	isAuthenticated,
+	permitionType,
 	async (req, res, next) => {
 		try {
 			await teamsController.update(req, res, next);
@@ -62,6 +69,8 @@ teamsRouter.delete(
 	celebrate({
 		[Segments.PARAMS]: { id: Joi.string().uuid().required() },
 	}),
+	isAuthenticated,
+	permitionType,
 	async (req, res, next) => {
 		try {
 			await teamsController.delete(req, res, next);
